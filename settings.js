@@ -18,6 +18,9 @@
 // to make it available:
 //var fs = require("fs");
 
+var userDir = process.env.HOME + '/.node-red/';
+var flowFile = userDir + 'flows.json';
+
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: 1880,
@@ -44,15 +47,15 @@ module.exports = {
     debugMaxLength: 1000,
 
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
-    //flowFile: 'flows.json',
+    flowFile: flowFile,
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    //flowFilePretty: true,
+    flowFilePretty: true,
 
     // By default, all user data is stored in the Node-RED install directory. To
     // use a different location, the following property can be used
-    //userDir: '/home/nol/.node-red/',
+    userDir: userDir,
 
     // Node-RED scans the `nodes` directory in the install directory to find nodes.
     // The following property can be used to specify an additional directory to scan.
@@ -147,6 +150,8 @@ module.exports = {
     //    context.global.os
 
     functionGlobalContext: {
+        flowFile: flowFile,
+        //process: process,
         // os:require('os'),
         // bonescript:require('bonescript'),
         // jfive:require("johnny-five"),
