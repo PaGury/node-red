@@ -18,12 +18,12 @@
 // to make it available:
 //var fs = require("fs");
 
-var userDir = process.env.HOME + '/node-red/';
+var userDir = process.env.OPENSHIFT_DEPLOYMENTS_DIR + '/node-red/';
 var flowFile = userDir + 'flows.json';
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
-    uiPort: process.env.PORT || 1880,
+    uiPort: process.env.OPENSHIFT_NODEJS_PORT || 1880,
 
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
     // The following property can be used to listen on a specific interface. For
@@ -151,7 +151,7 @@ module.exports = {
 
     functionGlobalContext: {
         flowFile: flowFile,
-        //process: process,
+        process: process,
         // os:require('os'),
         // bonescript:require('bonescript'),
         // jfive:require("johnny-five"),
